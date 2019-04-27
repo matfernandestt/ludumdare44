@@ -45,7 +45,7 @@ public class Utilities
         }
     }
 
-[MenuItem("Tools/Reset Transform/Reset Transform &_q", false, 10)] // Alt + Q
+    [MenuItem("Tools/Reset Transform/Reset Transform &_q", false, 10)] // Alt + Q
     public static void ResetTransformTransform()
     {
         GameObject[] selection = Selection.gameObjects;
@@ -147,5 +147,13 @@ public class Utilities
         dataPath += assetsPath;
         Debug.Log("Opened " + dataPath);
         System.Diagnostics.Process.Start("explorer.exe", dataPath);
+    }
+
+    [MenuItem("Tools/Open Git Bash %#g")]
+    public static void OpenGitBash()
+    {
+        const string gitPath = @"C:\Program Files\Git\bin\sh.exe";
+        if (System.IO.File.Exists(gitPath))
+            System.Diagnostics.Process.Start(gitPath, "--login");
     }
 }
