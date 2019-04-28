@@ -13,7 +13,13 @@ MonoBehaviour:
   m_Name: GDD_GameProperties
   m_EditorClassIdentifier: 
   PlayerMoveSpeed: 4
-  PlayerJumpStrength: 4
+  PlayerJumpStrength: 15.62
+  PlayerSequentialJumpMaxTimeGap: 0.3
+  PlayerSequentialJumps:
+  - StrenghtModifier: 0.9
+  - StrenghtModifier: 1
+  - StrenghtModifier: 2
+  GlobalGravity: 42
   PlayerRotationLerpFactor: 0.155
   CameraFov: 70
   CameraDistance: 6.71

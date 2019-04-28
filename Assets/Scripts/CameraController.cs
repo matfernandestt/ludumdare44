@@ -13,11 +13,14 @@ public class CameraController : MonoBehaviour
 
     private GameProperties gP;
 
+    private new Camera camera;
+
     private void Start()
     {
         gP = GameProperties.Instance;
         transform.eulerAngles = Vector3.zero;
         input = ReInput.players.Players[0];
+        camera = GetComponent<Camera>();
     }
 
     private void LateUpdate()
@@ -38,5 +41,7 @@ public class CameraController : MonoBehaviour
         transform.position += transform.forward * gP.CameraRelativeOffset.z;
         transform.position += transform.right * gP.CameraRelativeOffset.x;
         transform.position += transform.up * gP.CameraRelativeOffset.y;
+
+        camera.fieldOfView = gP.CameraFov;
     }
 }

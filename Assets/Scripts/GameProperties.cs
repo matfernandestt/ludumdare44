@@ -8,6 +8,17 @@ public class GameProperties:ScriptableObject
 
     public float PlayerJumpStrength = 4;
 
+    public float PlayerSequentialJumpMaxTimeGap = 0.6f;
+
+    [Space(5)]
+
+    public SequentialJump[] PlayerSequentialJumps;
+
+    [Space(5)]
+
+    [Range(0, 100)]
+    public float GlobalGravity = 10f;
+
     [Range(0,1)]
     public float PlayerRotationLerpFactor = .7f;
 
