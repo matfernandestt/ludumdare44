@@ -10,6 +10,8 @@ public class CharacterMovement : MonoBehaviour
     private Rigidbody body;
     private Transform cameraTransform;
 
+    public float AccelerationFactor;
+
     private Vector3 moveStep;
     private Quaternion targetRotation;
 
@@ -32,6 +34,12 @@ public class CharacterMovement : MonoBehaviour
         moveStep.y = 0f;
         UpdateOrientation(applyOrientation);
 
+        AccelerationFactor += Time.deltaTime / (applyOrientation
+            ? gP.PlayerAccelerationTime
+            : - gP.PlayerDecelerationTime);
+
+        AccelerationFactor = Mathf.Clamp01(AccelerationFactor);
+
         moveStep.Normalize();
     }
 
@@ -48,7 +56,10 @@ public class CharacterMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var velocity = moveStep * gP.PlayerMoveSpeed;
+        var velocity = 
+            moveStep 
+            * gP.PlayerMoveSpeed 
+            * gP.PlayerAccelerationCurve.Evaluate(AccelerationFactor);
         velocity.y = body.velocity.y;
         body.velocity = velocity;
     }

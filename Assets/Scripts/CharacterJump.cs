@@ -37,6 +37,10 @@ public class CharacterJump : MonoBehaviour
 
     private bool lastFrameGroundedState;
 
+    private bool isHovering;
+
+    private bool isGrounded;
+
     public bool IsGrounded
     {
         get
@@ -53,6 +57,11 @@ public class CharacterJump : MonoBehaviour
                 var parenting = hitInfo.collider.GetComponentInParent<ParentingFallback>();
                 if (parenting != null)
                     transform.parent = parenting.transform;
+                if (isHovering)
+                {
+                    isHovering = false;
+                    CharacterGraphics.Instance.CallJumpEnd();
+                }
                 return true;
             }
             transform.parent = null;
@@ -73,19 +82,24 @@ public class CharacterJump : MonoBehaviour
         timeSinceLastJump += Time.deltaTime;
         Physics.gravity = new Vector3(0f,-gP.GlobalGravity,0f);
         Jump();
+        if (!isHovering && !isGrounded)
+        {
+            isHovering = true;
+            CharacterGraphics.Instance.CallFreeFall();
+        }
     }
 
     private void UpdateTrackers()
     {
-        var grounded = IsGrounded;
+        isGrounded = IsGrounded;
 
-        if (!lastFrameGroundedState && grounded)
+        if (!lastFrameGroundedState && isGrounded)
             timeSinceGrounded = 0f;
 
-        if (grounded)
+        if (isGrounded)
             timeSinceGrounded += Time.deltaTime;
 
-        lastFrameGroundedState = grounded;
+        lastFrameGroundedState = isGrounded;
     }
 
     private void Jump()
@@ -99,6 +113,9 @@ public class CharacterJump : MonoBehaviour
         if (timeSinceLastJump < minTimeBeforeNextJump)
             return;
 
+        CharacterGraphics.Instance.CallJumpAnimation(gP.PlayerSequentialJumps[sequentialJumpIndex].AnimationTrigger);
+
+        isHovering = true;
 
         body.velocity = new Vector3(body.velocity.x, 0f, body.velocity.z);
         body.AddForce(
