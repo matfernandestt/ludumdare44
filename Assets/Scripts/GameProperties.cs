@@ -6,6 +6,12 @@ public class GameProperties:ScriptableObject
     [Header("Player")]
     public float PlayerMoveSpeed = 4f;
 
+    public AnimationCurve PlayerAccelerationCurve;
+
+    public float PlayerAccelerationTime = 0.3f;
+
+    public float PlayerDecelerationTime = 0.2f;
+
     public float PlayerJumpStrength = 4;
 
     public float PlayerSequentialJumpMaxTimeGap = 0.6f;
