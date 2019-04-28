@@ -85,7 +85,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2533966046663449977}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: f7723587a1d2ed649be0564402b74f92, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCastOrigin: {fileID: 3326903018525932594}
-  groundedTestDistance: 0.4
+  groundedTestDistance: 0.6
   groundedTestMask:
     serializedVersion: 2
     m_Bits: 55
@@ -225,6 +225,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1973927484342286652}
     m_Modifications:
+    - target: {fileID: -7181734470756302157, guid: 590cec842ddf4ad44a68928d22cad0cc,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7181734470756302157, guid: 590cec842ddf4ad44a68928d22cad0cc,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 51f13ae366b42454e9d835d34ecf7de8, type: 2}
     - target: {fileID: -927199367670048503, guid: 590cec842ddf4ad44a68928d22cad0cc,
         type: 3}
       propertyPath: m_Name
@@ -300,16 +310,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.2382
       objectReference: {fileID: 0}
-    - target: {fileID: -7181734470756302157, guid: 590cec842ddf4ad44a68928d22cad0cc,
-        type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7181734470756302157, guid: 590cec842ddf4ad44a68928d22cad0cc,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 51f13ae366b42454e9d835d34ecf7de8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 590cec842ddf4ad44a68928d22cad0cc, type: 3}
 --- !u!4 &6339191422446426684 stripped

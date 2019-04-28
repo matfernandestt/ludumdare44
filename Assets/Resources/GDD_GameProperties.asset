@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf0dc590848b4ffea61bdadc545f6601, type: 3}
   m_Name: GDD_GameProperties
   m_EditorClassIdentifier: 
-  PlayerMoveSpeed: 4
+  PlayerMoveSpeed: 10
   PlayerJumpStrength: 15
   PlayerSequentialJumpMaxTimeGap: 0.6
   PlayerSequentialJumps:
@@ -25,7 +25,7 @@ MonoBehaviour:
   GlobalGravity: 30
   PlayerRotationLerpFactor: 0.155
   CameraFov: 70
-  CameraDistance: 12.36
+  CameraDistance: 13
   CameraRelativeOffset: {x: 0, y: 0.07, z: 0}
   CameraPitchAxisRange: {x: 5, y: 90}
   MouseSensibility: 18.05
