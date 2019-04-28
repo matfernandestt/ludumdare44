@@ -17,6 +17,9 @@ public class CameraController : MonoBehaviour
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        
         gP = GameProperties.Instance;
         transform.eulerAngles = Vector3.zero;
         input = ReInput.players.Players[0];
