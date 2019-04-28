@@ -50,10 +50,10 @@ public class CharacterJump : MonoBehaviour
                 hitInfo: out hitInfo)
             )
             {
-                transform.SetParent(hitInfo.collider.transform);
+                transform.parent = hitInfo.collider.transform;
                 return true;
             }
-            transform.SetParent(null);
+            transform.parent = null;
             return false;
         }
     }

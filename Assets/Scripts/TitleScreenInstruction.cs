@@ -28,7 +28,7 @@ public class TitleScreenInstruction : MonoBehaviour
         time += Time.deltaTime * blinkSpeed;
         textColor.a = (Mathf.Sin(time) + 1) / 2f;
         instructionTitle.color = textColor;
-        if (input.GetAnyButtonDown())
+        if (Input.anyKeyDown)
             GoToMenu();
     }
 
