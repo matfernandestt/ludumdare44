@@ -156,4 +156,46 @@ public class Utilities
         if (System.IO.File.Exists(gitPath))
             System.Diagnostics.Process.Start(gitPath, "--login");
     }
+
+    [MenuItem("Tools/Create A Scaleless Parent %#m")]
+    public static void CreateAScalelessParent()
+    {
+
+        if (Selection.gameObjects.Length == 0)
+        {
+            Debug.Log("There is no gameobject selected");
+            return;
+        }
+
+        if (Selection.gameObjects.Length > 1)
+        {
+            Debug.Log("There is more than one gameobject selected");
+            return;
+        }
+
+        var selected = Selection.gameObjects[0].transform;
+
+        var siblingIndex = selected.GetSiblingIndex();
+
+        Undo.RegisterFullObjectHierarchyUndo(selected.gameObject, "Before Parenting");
+
+        var grandfather = selected.parent;
+        var newFather = new GameObject("HOLDER :: " + selected.name).transform;
+
+        newFather.gameObject.AddComponent<ParentingFallback>();
+
+        newFather.SetParent(selected, true);
+        newFather.localPosition = Vector3.zero;
+        newFather.localRotation = Quaternion.identity;
+
+        newFather.SetParent(grandfather,true);
+        selected.SetParent(newFather,true);
+
+        selected.localScale = Vector3.Scale(selected.localScale, newFather.localScale);
+        newFather.localScale = Vector3.one;
+
+        newFather.SetSiblingIndex(siblingIndex);
+
+        Undo.RegisterCreatedObjectUndo(newFather.gameObject, "Created Parent");
+    }
 }

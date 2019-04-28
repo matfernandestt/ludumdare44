@@ -50,7 +50,9 @@ public class CharacterJump : MonoBehaviour
                 hitInfo: out hitInfo)
             )
             {
-                transform.parent = hitInfo.collider.transform;
+                var parenting = hitInfo.collider.GetComponentInParent<ParentingFallback>();
+                if (parenting != null)
+                    transform.parent = parenting.transform;
                 return true;
             }
             transform.parent = null;
