@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf0dc590848b4ffea61bdadc545f6601, type: 3}
   m_Name: GDD_GameProperties
   m_EditorClassIdentifier: 
-  PlayerMoveSpeed: 20
+  PlayerMoveSpeed: 10
   PlayerJumpStrength: 15
   PlayerSequentialJumpMaxTimeGap: 0.6
   PlayerSequentialJumps:
