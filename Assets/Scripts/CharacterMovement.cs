@@ -27,17 +27,17 @@ public class CharacterMovement : MonoBehaviour
 
         moveStep = cameraTransform.forward * moveInput.y;
         moveStep += cameraTransform.right * moveInput.x;
+
+        var applyOrientation = moveStep.sqrMagnitude > 0.1f;
         moveStep.y = 0f;
-        UpdateOrientation();
+        UpdateOrientation(applyOrientation);
 
         moveStep.Normalize();
-
-        Jump();
     }
 
-    private void UpdateOrientation()
+    private void UpdateOrientation(bool setOrientation)
     {
-        if (moveStep.sqrMagnitude > 0.5f)
+        if (setOrientation)
             targetRotation = Quaternion.LookRotation(moveStep, Vector3.up);
 
         transform.rotation = Quaternion.Lerp(
@@ -53,11 +53,5 @@ public class CharacterMovement : MonoBehaviour
         body.velocity = velocity;
     }
 
-    private void Jump()
-    {
-        if (!input.GetButtonDown("Jump"))
-            return;
-        body.velocity = new Vector3(body.velocity.x, 0f, body.velocity.z);
-        body.AddForce(Vector3.up * gP.PlayerJumpStrength, ForceMode.Impulse);
-    }
+    
 }
