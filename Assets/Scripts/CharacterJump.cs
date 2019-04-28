@@ -37,11 +37,26 @@ public class CharacterJump : MonoBehaviour
 
     private bool lastFrameGroundedState;
 
-    public bool IsGrounded => Physics.Raycast(
-        origin: groundCastOrigin.position,
-        direction: Vector3.down,
-        maxDistance: groundedTestDistance,
-        layerMask: groundedTestMask);
+    public bool IsGrounded
+    {
+        get
+        {
+            RaycastHit hitInfo;
+            if (Physics.Raycast(
+                origin: groundCastOrigin.position,
+                direction: Vector3.down,
+                maxDistance: groundedTestDistance,
+                layerMask: groundedTestMask,
+                hitInfo: out hitInfo)
+            )
+            {
+                transform.SetParent(hitInfo.collider.transform);
+                return true;
+            }
+            transform.SetParent(null);
+            return false;
+        }
+    }
 
     private void Start()
     {
