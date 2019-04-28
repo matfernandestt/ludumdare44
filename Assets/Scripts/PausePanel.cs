@@ -32,6 +32,9 @@ public class PausePanel : MonoBehaviour
 
     public void Show()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         isEnabled = true;
         Time.timeScale = 0f;
         panelHolder.SetActive(true);
@@ -39,6 +42,9 @@ public class PausePanel : MonoBehaviour
 
     public void Hide()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         isEnabled = false;
         Time.timeScale = 1f;
         panelHolder.SetActive(false);
@@ -51,13 +57,13 @@ public class PausePanel : MonoBehaviour
 
     public void OnReturnToLobbyButton()
     {
-        Hide();
+        Time.timeScale = 1f;
         SceneManager.LoadScene("SCN_LobbyStage");
     }
 
     public void OnReturnToMenuButton()
     {
-        Hide();
+        Time.timeScale = 1f;
         SceneManager.LoadScene("SCN_MainMenu");
     }
 
