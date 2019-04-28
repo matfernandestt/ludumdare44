@@ -24,8 +24,8 @@ MonoBehaviour:
     StrenghtModifier: 1.5
   GlobalGravity: 30
   PlayerRotationLerpFactor: 0.155
-  CameraFov: 70
-  CameraDistance: 13
+  CameraFov: 61.5
+  CameraDistance: 22.3
   CameraRelativeOffset: {x: 0, y: 0.07, z: 0}
   CameraPitchAxisRange: {x: 5, y: 90}
   MouseSensibility: 18.05
